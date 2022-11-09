@@ -1,0 +1,73 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $login-main-componentWidth;
+  height: $login-main-height;
+  background-color: rgb(255, 251, 244);
+}
+.login-component {
+  display: flex;
+  flex-direction: row;
+  width: $login-componentWidth;
+  height: $login-height;
+  border-radius: 15px;
+  background-color: white;
+}
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: $login-height;
+  width: $login-child;
+}
+.login-filed {
+  display: flex;
+  flex-direction: column;
+  height: $login-height;
+  width: $login-child;
+  margin-top: 3rem;
+}
+.register-filed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: $login-height;
+  width: $login-child;
+}
+.input-user {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 15rem;
+  padding: 0.5rem;
+  margin-top: 2rem;
+}
+h1 {
+  font-family: sans-serif;
+}
+.radio-button {
+  font-family: sans-serif;
+}
+.radio-button-group {
+  display: flex;
+  flex-direction: row;
+  font-family: sans-serif;
+  color: rgb(137, 136, 136);
+  margin-top: 2rem;
+}
+.login-button {
+  margin-top: 2rem;
+  height: 3rem;
+  width: 10rem;
+  border-style: none;
+  background-color: rgb(101, 155, 255);
+  font-family: sans-serif;
+  color: white;
+  font-size: 1rem;
+}
+.account-create {
+  font-family: sans-serif;
+  text-decoration: none;
+}
