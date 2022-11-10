@@ -2,6 +2,9 @@ import { takeEvery, put } from "redux-saga/effects";
 import { LOGIN_EMPLOYEE, LOGIN_FAIL } from "../redux/constant";
 import axios from "axios";
 import { login } from "../constant-api/api";
+import { type } from "@testing-library/user-event/dist/type";
+import { loginFail, loginSuccess } from "./action-login";
+import { getRequest } from "../services/http";
 
 function* loginEmployee({ ...loginData }) {
   const user = {
@@ -12,29 +15,21 @@ function* loginEmployee({ ...loginData }) {
 
   switch (user.role) {
     case "HR":
-      let checkResponse = true;
       try {
-        axios.post(login, user).then((res) => {
-          let data = res.data;
-          console.log("first execute ");
-          if (res.data == true) {
-            localStorage.setItem("userDetails", JSON.stringify(user));
-          } else {
-            alert(res.data.message);
-          }
-        });
+        const response = yield getRequest(login, user);
+        console.log("user response ", response);
+        if (response) {
+          localStorage.setItem("userDetails", JSON.stringify(user.role));
+          localStorage.setItem("userLoginResponse", JSON.stringify(response));
+          yield put(loginSuccess(response));
+          console.log("Inside the response");
+          alert(response);
+        } else {
+          yield put(loginFail());
+        }
       } catch {
         alert("Error");
       }
-      if (checkResponse === true) {
-        console.log("Second execute ");
-        yield put({ type: LOGIN_EMPLOYEE, checkResponse });
-      }
-      let data = true;
-      if (data === true) {
-        yield put({ type: LOGIN_EMPLOYEE, data });
-      }
-
       break;
 
     case "Admin":
@@ -49,22 +44,3 @@ function* loginEmployeeSaga() {
   yield takeEvery(LOGIN_EMPLOYEE, loginEmployee);
 }
 export default loginEmployeeSaga;
-
-// try {
-//   axios
-//     .post("http://localhost:8085/loginUser/userLogin", user)
-//     .then((res) => {
-//       if (res.data == true) {
-//         localStorage.setItem("userDetails", JSON.stringify(user));
-//       } else {
-//         alert(res.data.message);
-//       }
-//     });
-// } catch {
-//   alert("Error");
-// }
-
-// let data = true;
-// if (data === true) {
-//   yield put({ type: LOGIN_EMPLOYEE, data });
-// }

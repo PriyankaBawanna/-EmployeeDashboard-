@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { loginEmployee } from "./action-login";
 import { useDispatch } from "react-redux";
-import { RadioButton } from "../common-component/radio-button/selectRole";
-
 import { useSelector } from "react-redux";
+import { loginSuccess } from "./action-login";
+import { RadioButton } from "../common-component/radio-button/selectRole";
 import signIn from "../image/signIn.jpg";
 import { Link, useNavigate } from "react-router-dom";
+import { LOGIN_SUCCESS } from "../redux/constant";
 function LoginPage() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     email: "",
@@ -18,24 +19,29 @@ function LoginPage() {
     password: inputDataOfEmployee.password,
   };
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const loginDetails = useSelector((state) => state.employeeLogin);
+  // console.log("loginDetails", loginDetails);
+
   const radioChangeHandler = (e) => {
     setInputDataOfEmployee({
       ...inputDataOfEmployee,
       role: e.target.value,
     });
   };
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.employeeLogin);
-  const check = data[0];
-  console.log("response ", check);
-  if (check === true) {
-    console.log("Inside the If condition ");
+
+  let userLoginResponse = JSON.parse(localStorage.getItem("userLoginResponse"));
+
+  if (userLoginResponse) {
     navigate("/EmployeeList");
+    let response = null;
+    localStorage.setItem("userLoginResponse", JSON.stringify(response));
+    let userLoginResponse = JSON.parse(
+      localStorage.getItem("userLoginResponse")
+    );
   }
-  if (check === false) {
-    alert("Error");
-  }
+
   return (
     <div className="login">
       <div className="login-component">
@@ -43,7 +49,7 @@ function LoginPage() {
           <img src={signIn} />
           <nav>
             <Link to="/Registration" className="account-create">
-              Create an account{" "}
+              Create an account
             </Link>
           </nav>
         </div>
