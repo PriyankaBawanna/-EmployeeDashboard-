@@ -22,8 +22,8 @@ function* loginEmployee({ ...loginData }) {
           localStorage.setItem("userDetails", JSON.stringify(user.role));
           localStorage.setItem("userLoginResponse", JSON.stringify(response));
           yield put(loginSuccess(response));
-          console.log("Inside the response");
-          alert(response);
+          console.log("Inside the response", response);
+          alert("welcome");
         } else {
           yield put(loginFail());
         }

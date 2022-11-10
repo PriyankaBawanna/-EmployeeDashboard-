@@ -13,6 +13,7 @@ function LoginPage() {
     password: "",
     role: "",
   });
+
   const loginData = {
     role: inputDataOfEmployee.role,
     email: inputDataOfEmployee.email,
@@ -21,8 +22,10 @@ function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const loginDetails = useSelector((state) => state.employeeLogin);
-  // console.log("loginDetails", loginDetails);
+  const loginDetails = useSelector((state) => state.employeeLogin);
+  console.log("loginDetails", loginDetails);
+
+  useEffect(() => {});
 
   const radioChangeHandler = (e) => {
     setInputDataOfEmployee({
@@ -32,14 +35,9 @@ function LoginPage() {
   };
 
   let userLoginResponse = JSON.parse(localStorage.getItem("userLoginResponse"));
-
   if (userLoginResponse) {
     navigate("/EmployeeList");
-    let response = null;
-    localStorage.setItem("userLoginResponse", JSON.stringify(response));
-    let userLoginResponse = JSON.parse(
-      localStorage.getItem("userLoginResponse")
-    );
+    localStorage.setItem("userLoginResponse", JSON.stringify(null));
   }
 
   return (
