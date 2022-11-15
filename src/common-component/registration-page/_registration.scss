@@ -1,0 +1,30 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $login-main-componentWidth;
+  height: $login-main-height;
+  background-color: #f3e5cd;
+}
+.registration-page {
+  display: flex;
+  flex-direction: row;
+  height: 32rem;
+  width: 75%;
+  background-color: white;
+  border-radius: 11px;
+}
+.registration-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.registration-image {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}

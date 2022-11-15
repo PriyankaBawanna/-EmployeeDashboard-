@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { loginEmployee } from "./action-login";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { loginSuccess } from "./action-login";
 import { RadioButton } from "../common-component/radio-button/selectRole";
 import signIn from "../image/signIn.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { LOGIN_SUCCESS } from "../redux/constant";
+
 function LoginPage() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     email: "",
@@ -25,8 +24,6 @@ function LoginPage() {
   const loginDetails = useSelector((state) => state.employeeLogin);
   console.log("loginDetails", loginDetails);
 
-  useEffect(() => {});
-
   const radioChangeHandler = (e) => {
     setInputDataOfEmployee({
       ...inputDataOfEmployee,
@@ -34,10 +31,26 @@ function LoginPage() {
     });
   };
 
+  let role = JSON.parse(localStorage.getItem("userDetails"));
   let userLoginResponse = JSON.parse(localStorage.getItem("userLoginResponse"));
-  if (userLoginResponse) {
-    navigate("/EmployeeList");
+  let clearStorage = () => {
     localStorage.setItem("userLoginResponse", JSON.stringify(null));
+  };
+  if (userLoginResponse) {
+    switch (role) {
+      case "HR":
+        navigate("/HomePageHr");
+        clearStorage();
+        break;
+      case "Admin":
+        navigate("/Admin");
+        clearStorage();
+        break;
+      case "Manger":
+        navigate("/Managers");
+        clearStorage();
+        break;
+    }
   }
 
   return (

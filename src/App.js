@@ -9,6 +9,7 @@ import LoginPage from "./login-page/loginPage";
 import Home from "./core";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./style.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const dispatch = useDispatch();
   const results = useSelector((state) => state.userData);
