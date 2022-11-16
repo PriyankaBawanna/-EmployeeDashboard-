@@ -20,7 +20,7 @@ function EmployeeList() {
 
   return (
     <>
-      <AdminHeader />
+      <AdminHeader employeeList={true} />
 
       <div>
         <table class="table">
