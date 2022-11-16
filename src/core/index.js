@@ -10,6 +10,7 @@ import HomePageHr from "../hr-component/homeHr";
 import LoginPage from "../login-page/loginPage";
 import Managers from "../managers/managers";
 import UpdateEmployee from "../update-employee/updateEmployee";
+import ViewEmployee from "../update-employee/viewEmployee";
 function Home() {
   return (
     <>
@@ -24,6 +25,7 @@ function Home() {
           <Route path="/Managers" element={<Managers />} />
           <Route path="/EmployeeList" element={<EmployeeList />} />
           <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
+          <Route path="/ViewEmployee" element={<ViewEmployee />} />
         </Routes>
       </BrowserRouter>
     </>

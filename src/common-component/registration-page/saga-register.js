@@ -3,8 +3,6 @@ import { REGISTER_EMPLOYEE } from "../../redux/constant";
 import { register } from "../../constant-api/api";
 import axios from "axios";
 function* setEmployeeData({ ...userData }) {
-  console.log("Post Data API Call Here ", userData);
-
   const body = {
     name: userData.userData.name,
     age: userData.userData.age,
@@ -27,19 +25,3 @@ function* setEmployeeDataSaga() {
   yield takeEvery(REGISTER_EMPLOYEE, setEmployeeData);
 }
 export default setEmployeeDataSaga;
-// try {
-//   const requestOptions = {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(body),
-//   };
-//   yield fetch(
-//     "http://localhost:3005/employeeRegister/register",
-//     requestOptions
-//   ).then((response) => {
-//     response.json();
-//     alert("Done");
-//   });
-// } catch {
-//   alert("error");
-// }

@@ -48,15 +48,43 @@ function EmployeeList() {
                   <td>{item.gender}</td>
 
                   <td>
-                    {/* <Link to="/UpdateEmployee">Update</Link> */}
-
                     <button
                       onClick={() => {
-                        dispatch(updateEmployee(item._id));
+                        dispatch(
+                          updateEmployee({
+                            id: item._id,
+                            name: item.name,
+                            age: item.age,
+                            email: item.email,
+                            pincode: item.pincode,
+                            role: item.role,
+                            gender: item.gender,
+                          })
+                        );
                         navigate("/UpdateEmployee");
                       }}
                     >
                       Edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        dispatch(
+                          updateEmployee({
+                            id: item._id,
+                            name: item.name,
+                            age: item.age,
+                            email: item.email,
+                            pincode: item.pincode,
+                            role: item.role,
+                            gender: item.gender,
+                          })
+                        );
+                        navigate("/ViewEmployee");
+                      }}
+                    >
+                      View
                     </button>
                   </td>
                 </tr>
