@@ -43,11 +43,11 @@ function LoginPage() {
         clearStorage();
         break;
       case "Admin":
-        navigate("/Admin");
+        navigate("/AdminHome");
         clearStorage();
         break;
       case "Manger":
-        navigate("/Managers");
+        navigate("/MangerHome");
         clearStorage();
         break;
     }

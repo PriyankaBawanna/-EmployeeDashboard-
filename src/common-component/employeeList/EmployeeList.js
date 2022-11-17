@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { empList } from "./action-employee-List";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import AdminHeader from "../../admin-component/admin-header/adminHeader";
 import { Link, useNavigate } from "react-router-dom";
-import UpdateEmployee from "../../update-employee/updateEmployee";
+
 import { updateEmployee } from "../../update-employee/updateaction";
 
-function EmployeeList() {
+function EmployeeList(prop) {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.employeeData);
@@ -18,10 +17,11 @@ function EmployeeList() {
 
   const navigate = useNavigate();
 
+  const emp = prop.editEmployee;
+  console.log("Employee prop", emp);
+
   return (
     <>
-      <AdminHeader employeeList={true} />
-
       <div>
         <table class="table">
           <thead>
@@ -46,27 +46,6 @@ function EmployeeList() {
                   <td>{item.pincode}</td>
                   <td>{item.role}</td>
                   <td>{item.gender}</td>
-
-                  <td>
-                    <button
-                      onClick={() => {
-                        dispatch(
-                          updateEmployee({
-                            id: item._id,
-                            name: item.name,
-                            age: item.age,
-                            email: item.email,
-                            pincode: item.pincode,
-                            role: item.role,
-                            gender: item.gender,
-                          })
-                        );
-                        navigate("/UpdateEmployee");
-                      }}
-                    >
-                      Edit
-                    </button>
-                  </td>
                   <td>
                     <button
                       onClick={() => {
@@ -86,6 +65,29 @@ function EmployeeList() {
                     >
                       View
                     </button>
+
+                    {emp ? (
+                      <></>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          dispatch(
+                            updateEmployee({
+                              id: item._id,
+                              name: item.name,
+                              age: item.age,
+                              email: item.email,
+                              pincode: item.pincode,
+                              role: item.role,
+                              gender: item.gender,
+                            })
+                          );
+                          navigate("/UpdateEmployee");
+                        }}
+                      >
+                        Edit
+                      </button>
+                    )}
                   </td>
                 </tr>
               </tbody>

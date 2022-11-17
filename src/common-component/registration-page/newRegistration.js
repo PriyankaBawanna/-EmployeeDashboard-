@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { addEmployeeData } from "./action-registration";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import signUp from "../../image/signUp.jpg";
+
 import { RadioButton } from "../radio-button/selectRole";
-import { UserEmail } from "../radio-button/inputEmail";
-import RegistrationImage from "./registrationImage";
-import AdminHeader from "../../admin-component/admin-header/adminHeader";
+
 export default function NewRegistration(prop) {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     name: "",
@@ -54,13 +51,13 @@ export default function NewRegistration(prop) {
 
   return (
     <>
-      {registration ? (
+      {/* {registration ? (
         <></>
       ) : (
         <span>
           <AdminHeader />
         </span>
-      )}
+      )} */}
       <div className="registration-fields">
         <input
           type="text"

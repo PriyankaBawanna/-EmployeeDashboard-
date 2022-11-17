@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { updateEmployeeData } from "./updateaction";
-import AdminHeader from "../admin-component/admin-header/adminHeader";
+import HR from "../hr-component/HR";
+
 export default function UpdateEmployee() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     id: "",
@@ -63,7 +64,7 @@ export default function UpdateEmployee() {
 
   return (
     <>
-      <AdminHeader />
+      <HR />
       <div className="registration-fields">
         <input
           type="text"

@@ -1,10 +1,11 @@
 import React from "react";
-import AdminHeader from "../admin-component/admin-header/adminHeader";
-
+import { Link } from "react-router-dom";
+import LogOut from "../logout-component/logOut";
 function Managers() {
   return (
     <>
-      <AdminHeader manager={true} />
+      <Link to="/MangerHome">Dashboard </Link>
+      <LogOut />
     </>
   );
 }
