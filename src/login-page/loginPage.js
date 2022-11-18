@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RadioButton } from "../common-component/radio-button/selectRole";
 import signIn from "../image/signIn.jpg";
 import { Link, useNavigate } from "react-router-dom";
-
+import { loginSuccess, loginFail } from "./action-login";
 function LoginPage() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     email: "",
@@ -31,27 +31,30 @@ function LoginPage() {
     });
   };
 
-  let role = JSON.parse(localStorage.getItem("userDetails"));
-  let userLoginResponse = JSON.parse(localStorage.getItem("userLoginResponse"));
   let clearStorage = () => {
     localStorage.setItem("userLoginResponse", JSON.stringify(null));
   };
-  if (userLoginResponse) {
-    switch (role) {
-      case "HR":
-        navigate("/HomePageHr");
-        clearStorage();
-        break;
-      case "Admin":
-        navigate("/AdminHome");
-        clearStorage();
-        break;
-      case "Manger":
-        navigate("/MangerHome");
-        clearStorage();
-        break;
+
+  const data = useSelector((state) => state.employeeLogin);
+  console.log("user data ", data);
+  const handleLogin = () => {
+    let role = JSON.parse(localStorage.getItem("userDetails"));
+    let userLoginResponse = JSON.parse(
+      localStorage.getItem("userLoginResponse")
+    );
+    if (userLoginResponse && role == "Manger") {
+      navigate("/MangerHome");
+      clearStorage();
     }
-  }
+    if (userLoginResponse && role == "HR") {
+      navigate("/HomePageHr");
+      clearStorage();
+    }
+    if (userLoginResponse && role == "Admin") {
+      navigate("/AdminHome");
+      clearStorage();
+    }
+  };
 
   return (
     <div className="login">
@@ -127,6 +130,7 @@ function LoginPage() {
             className="login-button"
             onClick={() => {
               dispatch(loginEmployee({ ...loginData }));
+              handleLogin();
             }}
           >
             Login

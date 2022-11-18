@@ -15,6 +15,12 @@ export default function NewRegistration(prop) {
     role: "",
     gender: "",
   });
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [pinError, setPinError] = useState(false);
+  const [passwordError, setPassWordError] = useState(false);
+  const [disable, setDisable] = useState(0);
+
   const userData = {
     name: inputDataOfEmployee.name,
     age: inputDataOfEmployee.age,
@@ -25,6 +31,7 @@ export default function NewRegistration(prop) {
     role: inputDataOfEmployee.role,
     gender: inputDataOfEmployee.gender,
   };
+
   const dispatch = useDispatch();
   const radioChangeHandler = (e) => {
     setInputDataOfEmployee({
@@ -39,15 +46,56 @@ export default function NewRegistration(prop) {
     });
   };
 
-  const inputEmail = (e) => {
+  const registration = prop.registerProp;
+
+  const handleInputEmail = (e) => {
     setInputDataOfEmployee({
       ...inputDataOfEmployee,
       email: e.target.value,
     });
+    if (inputDataOfEmployee.email === "") {
+      setEmailError(true);
+    }
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (regEx.test(inputDataOfEmployee.email)) {
+      setEmailError(false);
+    }
   };
 
-  const registration = prop.registerProp;
-  console.log("registerProp", registration);
+  const handleInputPinCode = () => {
+    if (inputDataOfEmployee.pincode.length == 6) {
+      setPinError(true);
+    } else {
+      setPinError(false);
+    }
+  };
+
+  function handleInputName() {
+    if (inputDataOfEmployee.name.length < 3) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+  }
+
+  const handleInputPassword = () => {
+    if (inputDataOfEmployee.password === "") {
+      setPassWordError(true);
+    }
+    const regEx = /^[0-9 a-z A-z~`!@#$%^&*()_+<>]{6,20}$/g;
+    if (regEx.test(inputDataOfEmployee.password)) {
+      setPassWordError(false);
+    }
+  };
+  const validation = () => {
+    if (nameError || emailError || passwordError || pinError) {
+      setDisable(true);
+    }
+    if (!nameError && !emailError && !passwordError && !pinError) {
+      setDisable(false);
+      dispatch(addEmployeeData({ ...userData }));
+    }
+  };
 
   return (
     <>
@@ -58,19 +106,24 @@ export default function NewRegistration(prop) {
           <AdminHeader />
         </span>
       )} */}
+
       <div className="registration-fields">
-        <input
-          type="text"
-          placeholder="name"
-          value={inputDataOfEmployee.name}
-          className="input-user-register"
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              name: e.target.value,
-            });
-          }}
-        />
+        <div className="user-input">
+          <input
+            type="text"
+            placeholder="name"
+            value={inputDataOfEmployee.name}
+            className="input-user-register"
+            onChange={(e) => {
+              setInputDataOfEmployee({
+                ...inputDataOfEmployee,
+                name: e.target.value,
+              });
+              handleInputName(e);
+            }}
+          />
+          {nameError && <span>user not valid</span>}
+        </div>
         <input
           className="input-user-register"
           type="date"
@@ -84,18 +137,18 @@ export default function NewRegistration(prop) {
             });
           }}
         ></input>
-        <input
-          type="text"
-          placeholder="email"
-          value={inputDataOfEmployee.email}
-          className="input-user-register"
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              email: e.target.value,
-            });
-          }}
-        />{" "}
+        <div className="user-input">
+          <input
+            type="text"
+            placeholder="email"
+            value={inputDataOfEmployee.email}
+            className="input-user-register"
+            onChange={(e) => {
+              handleInputEmail(e);
+            }}
+          />
+          {emailError && <span>Email not valid</span>}
+        </div>
         {/* <UserEmail placeholder="Email" id="1" onChange={inputEmail} /> */}
         <div className="radio-button-group">
           <span>Gender</span>
@@ -141,34 +194,45 @@ export default function NewRegistration(prop) {
             value="Manger"
           />
         </div>
-        <input
-          type="Number"
-          placeholder="Pincode"
-          value={inputDataOfEmployee.pincode}
-          className="input-user-register"
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              pincode: e.target.value,
-            });
-          }}
-        />
-        <input
-          type="Number"
-          placeholder="Password"
-          value={inputDataOfEmployee.password}
-          className="input-user-register"
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              password: e.target.value,
-            });
-          }}
-        />
+        <div className="user-input">
+          <input
+            type="Number"
+            placeholder="Pincode"
+            value={inputDataOfEmployee.pincode}
+            className="input-user-register"
+            onChange={(e) => {
+              setInputDataOfEmployee({
+                ...inputDataOfEmployee,
+                pincode: e.target.value,
+              });
+              handleInputPinCode();
+            }}
+          />
+          {pinError && <span>Please Enter the valid pin</span>}
+        </div>
+        <div className="user-input">
+          <input
+            type="text"
+            placeholder="Password"
+            value={inputDataOfEmployee.password}
+            className="input-user-register"
+            onChange={(e) => {
+              setInputDataOfEmployee({
+                ...inputDataOfEmployee,
+                password: e.target.value,
+              });
+              handleInputPassword();
+            }}
+          />
+          {passwordError && (
+            <span>Password should be greater than 5 character</span>
+          )}
+        </div>
         <button
-          className="login-button"
+          disabled={disable}
+          // className="login-button"
           onClick={() => {
-            dispatch(addEmployeeData({ ...userData }));
+            validation();
           }}
         >
           Register

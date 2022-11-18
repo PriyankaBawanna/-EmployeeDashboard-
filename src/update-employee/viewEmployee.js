@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import HR from "../hr-component/HR";
+import HR from "../hr-component/hr";
 
 function ViewEmployee() {
   const data = useSelector((state) => state.employeeDataUpdate);

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { updateEmployeeData } from "./updateaction";
-import HR from "../hr-component/HR";
+import HR from "../hr-component/hr";
 
 export default function UpdateEmployee() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
@@ -49,17 +49,17 @@ export default function UpdateEmployee() {
   console.log("user data in Update com", userData);
 
   const radioChangeHandlerForGender = (e) => {
-    // setInputDataOfEmployee({
-    //   //   ...inputDataOfEmployee,
-    //   //   gender: e.target.value,
-    // });
+    setInputDataOfEmployee({
+      ...inputDataOfEmployee,
+      gender: e.target.value,
+    });
   };
 
   const radioChangeHandler = (e) => {
-    // setInputDataOfEmployee({
-    //   //   ...inputDataOfEmployee,
-    //   //   role: e.target.value,
-    // });
+    setInputDataOfEmployee({
+      ...inputDataOfEmployee,
+      role: e.target.value,
+    });
   };
 
   return (
@@ -78,7 +78,7 @@ export default function UpdateEmployee() {
             });
           }}
         />
-        {/* <p>{inputDataOfEmployee.age}</p> */}
+
         <input
           className="input-user-register"
           type="date"
