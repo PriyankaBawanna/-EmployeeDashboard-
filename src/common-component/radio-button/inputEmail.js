@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const UserEmail = (props) => {
+export const UserInput = (props) => {
   const { changed, id, value, placeholder } = props;
   const [emailError, setEmailError] = useState("");
 

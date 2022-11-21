@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { RadioButton } from "../radio-button/selectRole";
 
-export default function NewRegistration(prop) {
+export default function NewRegistration() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     name: "",
     age: "",
@@ -46,19 +46,18 @@ export default function NewRegistration(prop) {
     });
   };
 
-  const registration = prop.registerProp;
-
   const handleInputEmail = (e) => {
     setInputDataOfEmployee({
       ...inputDataOfEmployee,
       email: e.target.value,
     });
-    if (inputDataOfEmployee.email === "") {
-      setEmailError(true);
-    }
+    let emailValidation = e.target.value;
+    console.log("email Validation ", emailValidation);
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
-    if (regEx.test(inputDataOfEmployee.email)) {
+    if (regEx.test(emailValidation)) {
       setEmailError(false);
+    } else if (!regEx.test(emailValidation) && emailValidation !== "") {
+      setEmailError(true);
     }
   };
 
@@ -78,8 +77,8 @@ export default function NewRegistration(prop) {
     }
   }
 
-  const handleInputPassword = () => {
-    if (inputDataOfEmployee.password === "") {
+  const handleInputPassword = (e) => {
+    if (e.target.value === " ") {
       setPassWordError(true);
     }
     const regEx = /^[0-9 a-z A-z~`!@#$%^&*()_+<>]{6,20}$/g;
@@ -99,14 +98,6 @@ export default function NewRegistration(prop) {
 
   return (
     <>
-      {/* {registration ? (
-        <></>
-      ) : (
-        <span>
-          <AdminHeader />
-        </span>
-      )} */}
-
       <div className="registration-fields">
         <div className="user-input">
           <input
@@ -119,7 +110,7 @@ export default function NewRegistration(prop) {
                 ...inputDataOfEmployee,
                 name: e.target.value,
               });
-              handleInputName(e);
+              handleInputName();
             }}
           />
           {nameError && <span>user not valid</span>}
@@ -149,7 +140,7 @@ export default function NewRegistration(prop) {
           />
           {emailError && <span>Email not valid</span>}
         </div>
-        {/* <UserEmail placeholder="Email" id="1" onChange={inputEmail} /> */}
+
         <div className="radio-button-group">
           <span>Gender</span>
           <RadioButton

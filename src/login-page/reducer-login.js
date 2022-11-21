@@ -1,16 +1,17 @@
 import { LOGIN_EMPLOYEE, LOGIN_FAIL, LOGIN_SUCCESS } from "../redux/constant";
 const initialState = { isFetching: false, result: null };
 export const employeeLogin = (data = initialState, action) => {
+  console.log("Action ", action.type);
   switch (action.type) {
     case LOGIN_EMPLOYEE:
-      console.log("employee login reducer  ", action);
+      console.log("4 reducer employee login reducer  ", action);
       return { isFetching: true };
     case LOGIN_SUCCESS:
-      console.log("LOGIN SUCCESS");
-      return { isFetching: false, result: action.payload };
+      console.log(" 4 reducer Login Success ", action.payload);
+      return { isFetching: false, result: action };
 
     case LOGIN_FAIL:
-      console.log("error Reducer   ", action);
+      console.log(" 4 reducer error Reducer   ", action);
       return { isFetching: false, result: null };
 
     default:

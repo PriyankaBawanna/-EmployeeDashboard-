@@ -28,61 +28,6 @@ function* loginEmployee({ ...loginData }) {
   } catch {
     alert("Error");
   }
-
-  // switch (user.role) {
-  //   case "HR":
-  //     try {
-  //       const response = yield getRequest(login, user);
-  //       if (response === true) {
-  //         localStorage.setItem("userDetails", JSON.stringify(user.role));
-  //         localStorage.setItem("userLoginResponse", JSON.stringify(response));
-  //         yield put(loginSuccess(response));
-  //         console.log("Inside the response", response);
-  //         alert(response);
-  //       } else {
-  //         yield put(loginFail());
-  //       }
-  //     } catch {
-  //       alert("Error");
-  //     }
-  //     break;
-
-  //   case "Admin":
-  //     console.log("role is Admin");
-  //     try {
-  //       const response = yield getRequest(login, user);
-  //       console.log("user response ", response);
-  //       if (response === true) {
-  //         localStorage.setItem("userDetails", JSON.stringify(user.role));
-  //         localStorage.setItem("userLoginResponse", JSON.stringify(response));
-  //         yield put(loginSuccess(response));
-  //         console.log("Inside the response", response);
-  //         alert("welcome");
-  //       } else {
-  //         yield put(loginFail());
-  //       }
-  //     } catch {
-  //       alert("Error");
-  //     }
-  //     break;
-  //   case "Manger":
-  //     try {
-  //       const response = yield getRequest(login, user);
-  //       console.log("user response ", response);
-  //       if (response === true) {
-  //         localStorage.setItem("userDetails", JSON.stringify(user.role));
-  //         localStorage.setItem("userLoginResponse", JSON.stringify(response));
-  //         yield put(loginSuccess(response));
-  //         console.log("Inside the response", response);
-  //         alert("welcome");
-  //       } else {
-  //         yield put(loginFail());
-  //       }
-  //     } catch {
-  //       alert("Error");
-  //     }
-  //     break;
-  // }
 }
 function* loginEmployeeSaga() {
   yield takeEvery(LOGIN_EMPLOYEE, loginEmployee);

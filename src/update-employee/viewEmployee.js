@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+
 import { useSelector } from "react-redux";
-import HR from "../hr-component/hr";
+import Admin from "../admin/admin";
 
 function ViewEmployee() {
   const data = useSelector((state) => state.employeeDataUpdate);
-  console.warn("data in view component ", data);
+  console.log("data in view component ", data);
+  console.log("data in view component", data.name);
+
+  let role = JSON.parse(localStorage.getItem("userDetails"));
+  console.log("update component role ", role);
 
   return (
     <>
-      <HR />
-      <p>name {data.name}</p>
-      <p>age {data.age}</p>
-
-      <p>{data.pincode}</p>
-      <p>{data.role}</p>
-      <p>{data.email}</p>
-      <p>{data.gender}</p>
+      {role == "HR" && <>HR</>}
+      {role == "Admin" && (
+        <>
+          <Admin />
+        </>
+      )}
+      {role == "manger" && <>Manger</>}
+      <p>View the user Details </p>
+      {data.name}
     </>
   );
 }

@@ -18,58 +18,43 @@ function EmployeeList(prop) {
   const navigate = useNavigate();
 
   const emp = prop.editEmployee;
+
   console.log("Employee prop", emp);
 
   return (
     <>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Name </th>
-              <th scope="col">Email</th>
-              <th scope="col">Age</th>
-              <th scope="col">Pincode</th>
-              <th scope="col">Role</th>
+      <div className="employee-list">
+        <div className="employee-welcome">
+          <h4>Welcome to Dashboard...!</h4>
+          <p>You can check the Details of employee</p>
+        </div>
+        <div className="employee-table">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Name </th>
+                <th scope="col">Email</th>
+                <th scope="col">Age</th>
+                <th scope="col">Pincode</th>
+                <th scope="col">Role</th>
 
-              <th scope="col">Gender</th>
-              <th> Operation </th>
-            </tr>
-          </thead>
-          {data.map((item) => (
-            <>
-              <tbody>
-                <tr>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.age}</td>
-                  <td>{item.pincode}</td>
-                  <td>{item.role}</td>
-                  <td>{item.gender}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        dispatch(
-                          updateEmployee({
-                            id: item._id,
-                            name: item.name,
-                            age: item.age,
-                            email: item.email,
-                            pincode: item.pincode,
-                            role: item.role,
-                            gender: item.gender,
-                          })
-                        );
-                        navigate("/ViewEmployee");
-                      }}
-                    >
-                      View
-                    </button>
-
-                    {emp ? (
-                      <></>
-                    ) : (
+                <th scope="col">Gender</th>
+                <th> Operation </th>
+              </tr>
+            </thead>
+            {data.map((item) => (
+              <>
+                <tbody>
+                  <tr>
+                    <td data-label="Name">{item.name}</td>
+                    <td data-label="Email"> {item.email}</td>
+                    <td data-label="Age">{item.age}</td>
+                    <td data-label="Pincode">{item.pincode}</td>
+                    <td data-label="Role">{item.role}</td>
+                    <td data-label="Gender">{item.gender}</td>
+                    <td data-label="Operation">
                       <button
+                        className="operation-button"
                         onClick={() => {
                           dispatch(
                             updateEmployee({
@@ -82,18 +67,41 @@ function EmployeeList(prop) {
                               gender: item.gender,
                             })
                           );
-                          navigate("/UpdateEmployee");
+                          navigate("/ViewEmployee");
                         }}
                       >
-                        Edit
+                        View
                       </button>
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </>
-          ))}
-        </table>
+
+                      {emp ? (
+                        <></>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            dispatch(
+                              updateEmployee({
+                                id: item._id,
+                                name: item.name,
+                                age: item.age,
+                                email: item.email,
+                                pincode: item.pincode,
+                                role: item.role,
+                                gender: item.gender,
+                              })
+                            );
+                            navigate("/UpdateEmployee");
+                          }}
+                        >
+                          Edit
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </>
+            ))}
+          </table>
+        </div>
       </div>
     </>
   );

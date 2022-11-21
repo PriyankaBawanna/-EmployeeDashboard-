@@ -26,6 +26,7 @@ function Home() {
           <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
           <Route path="/ViewEmployee" element={<ViewEmployee />} />
           <Route path="/MangerHome" element={<MangerHome />} />
+          <Route path="/HomePageHr" element={<HomePageHr />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { updateEmployeeData } from "./updateaction";
 import HR from "../hr-component/hr";
+import Admin from "../admin/admin";
 
 export default function UpdateEmployee() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
@@ -22,6 +23,9 @@ export default function UpdateEmployee() {
 
   const data = useSelector((state) => state.employeeDataUpdate);
   console.log("data in main component ", data);
+
+  let role = JSON.parse(localStorage.getItem("userDetails"));
+  console.log("update component role ", role);
 
   useEffect(() => {
     setInputDataOfEmployee({
@@ -46,7 +50,6 @@ export default function UpdateEmployee() {
     role: inputDataOfEmployee.role,
     gender: inputDataOfEmployee.gender,
   };
-  console.log("user data in Update com", userData);
 
   const radioChangeHandlerForGender = (e) => {
     setInputDataOfEmployee({
@@ -64,99 +67,117 @@ export default function UpdateEmployee() {
 
   return (
     <>
-      <HR />
-      <div className="registration-fields">
-        <input
-          type="text"
-          placeholder="name"
-          value={inputDataOfEmployee.name}
-          className="input-user-register"
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              name: e.target.value,
-            });
-          }}
-        />
+      {role == "HR" && <>HR</>}
+      {role == "Admin" && (
+        <>
+          <Admin />
+        </>
+      )}
 
-        <input
-          className="input-user-register"
-          type="date"
-          id="date-of-birth"
-          name="date-of-birth"
-        ></input>
-
-        <input
-          type="text"
-          className="input-user-register"
-          placeholder="email"
-          value={inputDataOfEmployee.email}
-          onChange={(e) => {
-            setInputDataOfEmployee({
-              ...inputDataOfEmployee,
-              email: e.target.value,
-            });
-          }}
-        />
-
-        <div className="radio-button-group">
-          <span>Gender</span>
-          <RadioButton
-            changed={radioChangeHandlerForGender}
-            id="1"
-            isSelected={inputDataOfEmployee.gender === "female"}
-            label="female"
-            value="female"
-            className="inputRadio"
+      {role == "Admin" && (
+        <div className="registration-fields">
+          <input
+            type="text"
+            placeholder="name"
+            value={inputDataOfEmployee.name}
+            className="input-user-register"
+            onChange={(e) => {
+              setInputDataOfEmployee({
+                ...inputDataOfEmployee,
+                name: e.target.value,
+              });
+            }}
           />
 
-          <RadioButton
-            changed={radioChangeHandlerForGender}
-            id="2"
-            isSelected={inputDataOfEmployee.gender === "male"}
-            label="male"
-            value="male"
+          <input
+            className="input-user-register"
+            type="date"
+            id="date-of-birth"
+            name="date-of-birth"
+          ></input>
+
+          <input
+            type="text"
+            className="input-user-register"
+            placeholder="email"
+            value={inputDataOfEmployee.email}
+            onChange={(e) => {
+              setInputDataOfEmployee({
+                ...inputDataOfEmployee,
+                email: e.target.value,
+              });
+            }}
+          />
+          <div>
+            <div className="radio-button-group">
+              <RadioButton
+                changed={radioChangeHandlerForGender}
+                id="1"
+                isSelected={inputDataOfEmployee.gender === "female"}
+                label="female"
+                value="female"
+                className="inputRadio"
+              />
+
+              <RadioButton
+                changed={radioChangeHandlerForGender}
+                id="2"
+                isSelected={inputDataOfEmployee.gender === "male"}
+                label="male"
+                value="male"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      {role == "HR" && (
+        <>
+          <p>{inputDataOfEmployee.name}</p>
+          <p>{inputDataOfEmployee.email}</p>
+          <p>{inputDataOfEmployee.gender}</p>
+        </>
+      )}
+      {(role == "HR") | (role == "Admin") && (
+        <div>
+          <div className="radio-button-group">
+            <RadioButton
+              changed={radioChangeHandler}
+              id="1"
+              isSelected={inputDataOfEmployee.role === "Admin"}
+              label="Admin"
+              value="Admin"
+              className="inputRadio"
+            />
+
+            <RadioButton
+              changed={radioChangeHandler}
+              id="2"
+              isSelected={inputDataOfEmployee.role === "HR"}
+              label="HR"
+              value="HR"
+            />
+            <RadioButton
+              changed={radioChangeHandler}
+              id="1"
+              isSelected={inputDataOfEmployee.role === "Manger"}
+              label="Manger"
+              value="Manger"
+            />
+          </div>
+          <input
+            type="Number"
+            placeholder="Pincode"
+            className="input-user-register"
+            value={inputDataOfEmployee.pincode}
           />
         </div>
-        <div className="radio-button-group">
-          <RadioButton
-            changed={radioChangeHandler}
-            id="1"
-            isSelected={inputDataOfEmployee.role === "Admin"}
-            label="Admin"
-            value="Admin"
-            className="inputRadio"
-          />
-
-          <RadioButton
-            changed={radioChangeHandler}
-            id="2"
-            isSelected={inputDataOfEmployee.role === "HR"}
-            label="HR"
-            value="HR"
-          />
-          <RadioButton
-            changed={radioChangeHandler}
-            id="1"
-            isSelected={inputDataOfEmployee.role === "Manger"}
-            label="Manger"
-            value="Manger"
-          />
-        </div>
-        <input
-          type="Number"
-          placeholder="Pincode"
-          className="input-user-register"
-          value={inputDataOfEmployee.pincode}
-        />
-
-        <button
-          className="login-button"
-          onClick={() => dispatch(updateEmployeeData({ ...userData }))}
-        >
-          update
-        </button>
-      </div>
+      )}
+      <button
+        className="login-button"
+        onClick={() => dispatch(updateEmployeeData({ ...userData }))}
+      >
+        update
+      </button>
     </>
   );
 }
