@@ -10,8 +10,3 @@ export default function AdminHome() {
     </>
   );
 }
-{
-  /* <h1>Admin home page </h1>
-      <Admin />
-      <EmployeeList /> */
-}

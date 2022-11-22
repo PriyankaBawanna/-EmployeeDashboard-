@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { updateEmployee } from "../../update-employee/updateaction";
-
+import { RiBallPenLine } from "react-icons/ri";
+import { SlEye } from "react-icons/sl";
+import Welcome from "./welcome";
 function EmployeeList(prop) {
   const dispatch = useDispatch();
 
@@ -25,8 +27,7 @@ function EmployeeList(prop) {
     <>
       <div className="employee-list">
         <div className="employee-welcome">
-          <h4>Welcome to Dashboard...!</h4>
-          <p>You can check the Details of employee</p>
+          <Welcome />
         </div>
         <div className="employee-table">
           <table className="table">
@@ -70,13 +71,14 @@ function EmployeeList(prop) {
                           navigate("/ViewEmployee");
                         }}
                       >
-                        View
+                        <SlEye />
                       </button>
 
                       {emp ? (
                         <></>
                       ) : (
                         <button
+                          className="operation-button"
                           onClick={() => {
                             dispatch(
                               updateEmployee({
@@ -92,7 +94,7 @@ function EmployeeList(prop) {
                             navigate("/UpdateEmployee");
                           }}
                         >
-                          Edit
+                          <RiBallPenLine />
                         </button>
                       )}
                     </td>

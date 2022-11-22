@@ -141,49 +141,54 @@ export default function NewRegistration() {
           {emailError && <span>Email not valid</span>}
         </div>
 
-        <div className="radio-button-group">
-          <span>Gender</span>
-          <RadioButton
-            changed={radioChangeHandlerForGender}
-            id="1"
-            isSelected={inputDataOfEmployee.gender === "female"}
-            label="female"
-            value="female"
-            className="inputRadio"
-          />
+        <div className="radio-button-registration ">
+          <div className="radio-button">
+            <span>Gender</span>
+            <RadioButton
+              changed={radioChangeHandlerForGender}
+              id="1"
+              isSelected={inputDataOfEmployee.gender === "female"}
+              label="female"
+              value="female"
+              className="inputRadio"
+            />
 
-          <RadioButton
-            changed={radioChangeHandlerForGender}
-            id="2"
-            isSelected={inputDataOfEmployee.gender === "male"}
-            label="male"
-            value="male"
-          />
+            <RadioButton
+              changed={radioChangeHandlerForGender}
+              id="2"
+              isSelected={inputDataOfEmployee.gender === "male"}
+              label="male"
+              value="male"
+            />
+          </div>
         </div>
-        <div className="radio-button-group">
-          <RadioButton
-            changed={radioChangeHandler}
-            id="1"
-            isSelected={inputDataOfEmployee.role === "Admin"}
-            label="Admin"
-            value="Admin"
-            className="inputRadio"
-          />
+        <div className="radio-button-registration ">
+          <div className="radio-button">
+            <div>Role</div>
+            <RadioButton
+              changed={radioChangeHandler}
+              id="1"
+              isSelected={inputDataOfEmployee.role === "Admin"}
+              label="Admin"
+              value="Admin"
+              className="inputRadio"
+            />
 
-          <RadioButton
-            changed={radioChangeHandler}
-            id="2"
-            isSelected={inputDataOfEmployee.role === "HR"}
-            label="HR"
-            value="HR"
-          />
-          <RadioButton
-            changed={radioChangeHandler}
-            id="1"
-            isSelected={inputDataOfEmployee.role === "Manger"}
-            label="Manger"
-            value="Manger"
-          />
+            <RadioButton
+              changed={radioChangeHandler}
+              id="2"
+              isSelected={inputDataOfEmployee.role === "HR"}
+              label="HR"
+              value="HR"
+            />
+            <RadioButton
+              changed={radioChangeHandler}
+              id="1"
+              isSelected={inputDataOfEmployee.role === "Manger"}
+              label="Manger"
+              value="Manger"
+            />
+          </div>
         </div>
         <div className="user-input">
           <input
@@ -221,7 +226,7 @@ export default function NewRegistration() {
         </div>
         <button
           disabled={disable}
-          // className="login-button"
+          className="login-button"
           onClick={() => {
             validation();
           }}

@@ -7,7 +7,6 @@ function HomePageHr() {
   const role = "HR";
   return (
     <>
-      <h1>HR Home Page</h1>
       <HR />
       <EmployeeList hr={role} />
       <LogOut />

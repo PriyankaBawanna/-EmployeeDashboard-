@@ -4,8 +4,16 @@ import LogOut from "../logout-component/logOut";
 function Managers() {
   return (
     <>
-      <Link to="/MangerHome">Dashboard </Link>
-      <LogOut />
+      <div className="header-admin">
+        <Link to="/MangerHome" className="link-hr">
+          Dashboard{" "}
+        </Link>
+
+        <div className="user-profile">
+          Welcome,HR
+          {/* <LogOut /> */}
+        </div>
+      </div>
     </>
   );
 }

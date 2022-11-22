@@ -16,19 +16,50 @@
   background-color: #282828;
   background-color: #447adf;
   @include common-property();
-
-  .link-section {
-    @include common-property();
-    justify-content: space-around;
-    width: 30%;
-    .link {
-      text-decoration: none;
-      @include font-property();
-    }
+  .link-hr {
+    @include font-property();
+    text-decoration: none;
+    color: white;
+    padding: 2rem;
   }
+
   .user-profile {
     @include common-property();
     @include font-property();
     width: 15%;
+  }
+}
+.add-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebf1f9;
+  height: 42rem;
+  width: 100%;
+  gap: 1rem;
+
+  .add-New-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 5rem;
+    width: 30%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 0.5rem;
+  }
+  .registration-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 32rem;
+    width: 30%;
+    background-color: white;
+    border-radius: 12px;
+  }
+  h3 {
+    color: #66a1f9;
   }
 }

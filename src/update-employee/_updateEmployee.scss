@@ -1,0 +1,97 @@
+/* css for view employee */
+@mixin common-property() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin user-info() {
+  border-radius: 10px;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #447adf;
+  align-items: flex-start;
+  padding: 0.5rem;
+}
+
+.view-employee-details {
+  @include common-property();
+  height: 38rem;
+  width: 100%;
+  gap: 1rem;
+  background-color: #ebf1f9;
+  .header {
+    width: 100%;
+  }
+  .intro-user {
+    @include common-property();
+    @include user-info();
+    height: 5rem;
+    width: 40%;
+  }
+  .user-info {
+    @include common-property();
+    @include user-info();
+    gap: 1.5rem;
+    height: 15rem;
+    width: 40%;
+
+    .details {
+      font-size: medium;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    width: 20%;
+    gap: 1rem;
+  }
+  .data {
+    color: #527fd3;
+  }
+}
+
+@media (max-width: 627px) {
+  .view-employee-details {
+    height: auto;
+    width: 100%;
+    align-items: center;
+
+    .user-info {
+      width: 100%;
+      padding: 1rem;
+    }
+    .intro-user {
+      width: 100%;
+      padding: 1rem;
+      height: 7rem;
+    }
+  }
+}
+/* css for update employee*/
+@mixin properties-update {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.update-employee {
+  @include properties-update();
+  .update-employee-form {
+    @include properties-update();
+    height: 35rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebf1f9;
+  }
+  .update-form-fields {
+    @include properties-update();
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    width: 35%;
+    border-radius: 12px;
+    background-color: white;
+  }
+}

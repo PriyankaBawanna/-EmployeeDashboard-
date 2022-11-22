@@ -4,13 +4,13 @@
   align-items: center;
   width: $login-main-componentWidth;
   height: $login-main-height;
-  background-color: #f3e5cd;
+  background-color: rgb(255, 251, 244);
 }
 .registration-page {
   display: flex;
   flex-direction: row;
-  height: 32rem;
-  width: 75%;
+  height: 35rem;
+  width: 79%;
   background-color: white;
   border-radius: 11px;
 }
@@ -31,4 +31,21 @@
 .user-input {
   display: flex;
   flex-direction: row;
+}
+
+.radio-button-registration {
+  display: flex;
+  flex-direction: row;
+  font-family: sans-serif;
+  justify-content: flex-start;
+  width: 16rem;
+  color: rgb(137, 136, 136);
+  align-items: flex-start;
+
+  margin-top: 2rem;
+  .radio-button {
+    display: flex;
+
+    gap: 1rem;
+  }
 }

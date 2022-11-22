@@ -48,7 +48,7 @@ function LoginPage() {
       clearStorage();
       navigate("/MangerHome");
     }
-    if (userLoginResponse === true && role == "HR") {
+    if (userLoginResponse && role == "HR") {
       clearStorage();
       navigate("/HomePageHr");
     }

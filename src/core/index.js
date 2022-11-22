@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddNew from "../admin/addNew";
 import AdminHome from "../admin/adminHome";
 import EmployeeList from "../common-component/employeeList/EmployeeList";
 import NewRegistration from "../common-component/registration-page/newRegistration";
@@ -10,6 +11,7 @@ import LoginPage from "../login-page/loginPage";
 
 import MangerHome from "../managers/mangerHome";
 import UpdateEmployee from "../update-employee/updateEmployee";
+
 import ViewEmployee from "../update-employee/viewEmployee";
 function Home() {
   return (
@@ -24,9 +26,11 @@ function Home() {
           <Route path="/AdminHome" element={<AdminHome />} />
           <Route path="/EmployeeList" element={<EmployeeList />} />
           <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
+
           <Route path="/ViewEmployee" element={<ViewEmployee />} />
           <Route path="/MangerHome" element={<MangerHome />} />
           <Route path="/HomePageHr" element={<HomePageHr />} />
+          <Route path="/AddNew" element={<AddNew />} />
         </Routes>
       </BrowserRouter>
     </>

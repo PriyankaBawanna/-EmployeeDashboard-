@@ -6,14 +6,10 @@ export default function Admin() {
   return (
     <>
       <div className="header-admin">
-        <div className="link-section">
-          <Link className="link" to="/AdminHome">
-            Dashboard
-          </Link>
-          <Link to="/NewRegistration" className="link">
-            Add New Employee
-          </Link>
-        </div>
+        <Link className="link-hr" to="/AdminHome">
+          Dashboard
+        </Link>
+
         <div className="user-profile">Welcome,HR </div>
       </div>
     </>
