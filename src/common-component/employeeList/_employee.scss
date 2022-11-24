@@ -1,34 +1,37 @@
-.employee-list {
+@mixin display-property() {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: auto;
-  background-color: #ebf1f9;
   justify-content: center;
   align-items: center;
+}
+
+.employee-list {
+  @include display-property();
+  width: 100%;
+  height: auto;
+  background-color: $bg-employee-list;
   .employee-table {
-    width: 95%;
+    width: $emp-table-width;
     height: auto;
     background-color: white;
-    border-radius: 12px;
+    border-radius: $table-radius;
   }
   .employee-welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 95%;
-    height: 6rem;
+    @include display-property();
+    width: $emp-table-width;
+    height: $welcome;
     background-color: white;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
-    border-radius: 12px;
+    border-radius: $table-radius;
     padding: 1rem;
+    justify-content: center;
   }
   p {
-    color: #66a1f9;
+    color: $heading-color;
   }
   h4 {
-    color: #448fff;
+    color: $heading-color;
   }
   .operation-button {
     border: none;
@@ -40,7 +43,7 @@
 table {
   width: 100%;
   th {
-    color: #66a1f9;
+    color: $heading-color;
   }
 
   td,
@@ -96,7 +99,7 @@ table {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  width: 100%;
 }
 .add-new-button {
   background: none;
@@ -106,4 +109,9 @@ table {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+.footer {
+  border: 1px solid black;
+  height: 15rem;
+  width: 100%;
 }

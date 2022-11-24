@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogOut from "../logout-component/logOut";
+import Profile from "../profile/profile";
 import UserProfile from "../user-profile/userProfile";
 export default function Admin() {
   return (
@@ -10,7 +11,9 @@ export default function Admin() {
           Dashboard
         </Link>
 
-        <div className="user-profile">Welcome,HR </div>
+        <div className="user-profile">
+          <Profile />
+        </div>
       </div>
     </>
   );

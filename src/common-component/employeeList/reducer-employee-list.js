@@ -3,7 +3,6 @@ export const employeeData = (data = [], action) => {
   console.log("reducer -list is called ", action);
   switch (action.type) {
     case SET_EMPLOYEE_LIST:
-      console.log("****", action);
       return [...action.data];
     default:
       //no case match

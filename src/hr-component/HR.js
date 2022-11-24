@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Profile from "../profile/profile";
 export default function HR() {
   return (
     <>
@@ -8,7 +9,9 @@ export default function HR() {
           Home
         </Link>
 
-        <div className="user-profile">Welcome,HR </div>
+        <div className="user-profile">
+          <Profile />
+        </div>
       </div>
     </>
   );

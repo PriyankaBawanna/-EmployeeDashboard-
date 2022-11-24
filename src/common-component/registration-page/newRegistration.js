@@ -113,7 +113,7 @@ export default function NewRegistration() {
               handleInputName();
             }}
           />
-          {nameError && <span>user not valid</span>}
+          <div>{nameError && <span>user not valid</span>}</div>
         </div>
         <input
           className="input-user-register"

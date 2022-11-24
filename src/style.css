@@ -149,10 +149,12 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 35rem;
   width: 79%;
   background-color: white;
@@ -173,7 +175,7 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
+  width: 75%;
 }
 
 .registration-image {
@@ -184,13 +186,13 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 50%;
 }
 
 .user-input {
@@ -207,11 +209,13 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  font-family: sans-serif;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -231,10 +235,10 @@ h1 {
 }
 
 .header-admin {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
   height: 3.5rem;
   width: 100%;
-  background-color: #282828;
   background-color: #447adf;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -277,7 +281,14 @@ h1 {
   font-size: larger;
   font-family: Arial, Helvetica, sans-serif;
   color: #fffafa;
-  width: 15%;
+  width: 30%;
+  flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .add-new {
@@ -342,6 +353,41 @@ h1 {
   color: #66a1f9;
 }
 
+.admin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+  background-color: #ebf1f9;
+}
+
+.footer-f {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 2rem;
+  width: 100%;
+  border-top: 1px solid #398fff;
+  color: #a3c8f9;
+}
+
 #app {
   border: 3px solid #e3e3e3;
   border-radius: 4px;
@@ -380,15 +426,15 @@ p {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
-  height: auto;
-  background-color: #ebf1f9;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: #ebf1f9;
 }
 
 .employee-list .employee-table {
@@ -409,6 +455,9 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 95%;
   height: 6rem;
   background-color: white;
@@ -416,6 +465,7 @@ p {
   margin-bottom: 1rem;
   border-radius: 12px;
   padding: 1rem;
+  justify-content: center;
 }
 
 .employee-list p {
@@ -423,7 +473,7 @@ p {
 }
 
 .employee-list h4 {
-  color: #448fff;
+  color: #66a1f9;
 }
 
 .employee-list .operation-button {
@@ -499,9 +549,7 @@ table tbody tr:nth-child(even) {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  width: 100%;
 }
 
 .add-new-button {
@@ -512,6 +560,12 @@ table tbody tr:nth-child(even) {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+.footer {
+  border: 1px solid black;
+  height: 15rem;
+  width: 100%;
 }
 
 /* css for view employee */
@@ -598,7 +652,7 @@ table tbody tr:nth-child(even) {
 }
 
 .view-employee-details .data {
-  color: #527fd3;
+  color: #447adf;
 }
 
 @media (max-width: 627px) {
@@ -677,5 +731,148 @@ table tbody tr:nth-child(even) {
   width: 35%;
   border-radius: 12px;
   background-color: white;
+}
+
+.dropbtn {
+  border: none;
+  background-color: #447adf;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  height: 26rem;
+  width: 20rem;
+  padding: 1rem;
+  border-radius: 9px;
+  background-color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.name-circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  height: 12rem;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.circle-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  background-color: #659bff;
+}
+
+h2 {
+  color: white;
+  font-size: 3rem;
+}
+
+.employee-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  color: #659bff;
+}
+
+.log-out-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.heading-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 18rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.log-out-btn {
+  height: 2rem;
+  width: 15rem;
+  border-style: none;
+  background-color: #659bff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: sans-serif;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 12px;
 }
 /*# sourceMappingURL=style.css.map */

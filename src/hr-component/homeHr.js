@@ -7,9 +7,11 @@ function HomePageHr() {
   const role = "HR";
   return (
     <>
-      <HR />
-      <EmployeeList hr={role} />
-      <LogOut />
+      <div className="admin">
+        <HR />
+        <EmployeeList hr={role} />
+        <div className="footer-f">@copyright</div>
+      </div>
     </>
   );
 }

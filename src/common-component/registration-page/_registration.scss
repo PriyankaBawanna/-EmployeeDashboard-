@@ -1,32 +1,34 @@
-.registration {
+@mixin registration-Property() {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@mixin fields() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.registration {
+  @include registration-Property();
   width: $login-main-componentWidth;
   height: $login-main-height;
-  background-color: rgb(255, 251, 244);
+  background-color: $registration-background-color;
 }
 .registration-page {
-  display: flex;
-  flex-direction: row;
-  height: 35rem;
-  width: 79%;
+  @include registration-Property();
+  height: $registration-height;
+  width: $registration-width;
   background-color: white;
   border-radius: 11px;
 }
 .registration-fields {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
+  @include fields();
+  width: $registration-fields-width;
 }
 .registration-image {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
+  @include fields();
+  width: $img-width;
 }
 .user-input {
   display: flex;
@@ -34,18 +36,15 @@
 }
 
 .radio-button-registration {
-  display: flex;
-  flex-direction: row;
-  font-family: sans-serif;
+  @include registration-Property();
+  font-family: $font-family;
   justify-content: flex-start;
-  width: 16rem;
-  color: rgb(137, 136, 136);
+  width: $radio-btn-area-width;
+  color: $radio-btn-color;
   align-items: flex-start;
-
   margin-top: 2rem;
   .radio-button {
     display: flex;
-
-    gap: 1rem;
+    gap: $gap-btn;
   }
 }

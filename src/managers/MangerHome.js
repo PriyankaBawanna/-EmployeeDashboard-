@@ -5,9 +5,10 @@ import Managers from "./managers";
 
 export default function MangerHome() {
   return (
-    <div>
+    <div className="admin">
       <Managers />
       <EmployeeList editEmployee={true} />
+      <div className="footer-f">@copyright</div>
     </div>
   );
 }

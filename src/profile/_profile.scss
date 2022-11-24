@@ -1,0 +1,73 @@
+@mixin display-property() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropbtn {
+  border: none;
+  background-color: $header-admin-background-color;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  height: 26rem;
+  width: 20rem;
+  padding: 1rem;
+  border-radius: 9px;
+  background-color: white;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.name-circle {
+  @include display-property();
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 12rem;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+.circle-profile {
+  @include display-property();
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  background-color: #659bff;
+}
+h2 {
+  color: white;
+  font-size: 3rem;
+}
+
+.employee-info {
+  @include display-property();
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #659bff;
+}
+.log-out-section {
+  @include display-property();
+}
+
+.heading-name {
+  display: flex;
+  width: 18rem;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogOut from "../logout-component/logOut";
+import Profile from "../profile/profile";
 function Managers() {
   return (
     <>
@@ -10,8 +11,7 @@ function Managers() {
         </Link>
 
         <div className="user-profile">
-          Welcome,HR
-          {/* <LogOut /> */}
+          <Profile />
         </div>
       </div>
     </>

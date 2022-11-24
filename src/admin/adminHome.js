@@ -5,8 +5,11 @@ import Admin from "./admin";
 export default function AdminHome() {
   return (
     <>
-      <Admin />
-      <EmployeeList />
+      <div className="admin">
+        <Admin />
+        <EmployeeList />
+        <div className="footer-f">@copyright</div>
+      </div>
     </>
   );
 }

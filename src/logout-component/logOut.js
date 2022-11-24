@@ -4,11 +4,11 @@ function LogOut() {
   const navigate = useNavigate();
   function handleLogOut() {
     localStorage.clear();
-    navigate("/ ", { replace: true });
+    navigate("/", { replace: true });
   }
   return (
     <>
-      <button onClick={handleLogOut} className="logOutBtn">
+      <button onClick={handleLogOut} className="log-out-btn">
         Logout
       </button>
     </>
