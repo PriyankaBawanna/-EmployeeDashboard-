@@ -1,5 +1,5 @@
 import React from "react";
-import EmployeeList from "../common-component/employeeList/EmployeeList";
+import EmployeeList from "../common/employee-list/employee-list";
 
 import Managers from "./managers";
 

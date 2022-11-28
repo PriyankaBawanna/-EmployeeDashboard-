@@ -84,11 +84,9 @@ function ViewEmployee() {
 
           {role == "HR" ||
             (role == "Admin" && (
-              <>
-                <button className="login-button" onClick={goToEditPage}>
-                  Edit
-                </button>
-              </>
+              <button className="login-button" onClick={goToEditPage}>
+                Edit
+              </button>
             ))}
         </div>
       </div>

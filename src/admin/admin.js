@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogOut from "../logout-component/logOut";
+import LogOut from "../logout/log-out";
 import Profile from "../profile/profile";
-import UserProfile from "../user-profile/userProfile";
+import UserProfile from "../user-profile/user-profile";
 export default function Admin() {
   return (
     <>

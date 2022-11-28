@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import { updateEmployee } from "../../update-employee/updateaction";
+import { updateEmployee } from "../../update-employee/update-action";
 import { RiBallPenLine } from "react-icons/ri";
 import { SlEye } from "react-icons/sl";
 import Welcome from "./welcome";

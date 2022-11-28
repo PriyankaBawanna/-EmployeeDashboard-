@@ -1,7 +1,7 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { SET_SINGLE_EMPLOYEE_DATA } from "../redux/constant";
-import { userData } from "../redux/reducer";
 import axios from "axios";
+
 function* updateData({ ...userData }) {
   const body = {
     id: userData.userData.id,

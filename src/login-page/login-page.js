@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Navigate } from "react";
 import { loginEmployee } from "./action-login";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { RadioButton } from "../common-component/radio-button/selectRole";
+import { RadioButton } from "../common/user-input/selectRole";
 import signIn from "../image/signIn.jpg";
 import { Link, useNavigate } from "react-router-dom";
+
 function LoginPage() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     email: "",
@@ -20,42 +21,29 @@ function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.employeeLogin);
+  const result = data.result;
+
+  const isLoggedIn = () => {
+    dispatch(loginEmployee({ ...loginData }));
+    if (result && loginData.role === "Manger") {
+      navigate("/PrivateRoute/MangerHome");
+    }
+
+    if (result && loginData.role === "Admin") {
+      navigate("/PrivateRoute/AdminHome");
+    }
+
+    if (result && loginData.role === "HR") {
+      navigate("/PrivateRoute/HomePageHr");
+    }
+  };
 
   const radioChangeHandler = (e) => {
     setInputDataOfEmployee({
       ...inputDataOfEmployee,
       role: e.target.value,
     });
-  };
-
-  let clearStorage = () => {
-    setTimeout(function () {
-      //let setDetails = localStorage.setItem("userDetails", JSON.stringify(""));
-      let setRole = localStorage.setItem(
-        "userLoginResponse",
-        JSON.stringify(false)
-      );
-      console.log("clear Storage", setRole);
-    }, 5000);
-  };
-
-  const handleLogin = () => {
-    let role = JSON.parse(localStorage.getItem("userDetails"));
-    let userLoginResponse = JSON.parse(
-      localStorage.getItem("userLoginResponse")
-    );
-    if (userLoginResponse && role == "Manger") {
-      clearStorage();
-      navigate("/MangerHome");
-    }
-    if (userLoginResponse && role == "HR") {
-      clearStorage();
-      navigate("/HomePageHr");
-    }
-    if (userLoginResponse && role == "Admin") {
-      clearStorage();
-      navigate("/AdminHome");
-    }
   };
 
   return (
@@ -117,7 +105,7 @@ function LoginPage() {
             <input
               className="input-user"
               value={inputDataOfEmployee.password}
-              type={"text"}
+              type={"Password"}
               autoComplete="off"
               placeholder="password"
               onChange={(e) => {
@@ -131,8 +119,7 @@ function LoginPage() {
           <button
             className="login-button"
             onClick={() => {
-              dispatch(loginEmployee({ ...loginData }));
-              handleLogin();
+              isLoggedIn();
             }}
           >
             Login

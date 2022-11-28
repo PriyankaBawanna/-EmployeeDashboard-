@@ -1,5 +1,5 @@
 import React from "react";
-import NewRegistration from "../common-component/registration-page/newRegistration";
+import NewRegistration from "../common/registration-page/new-registration";
 import Admin from "./admin";
 
 export default function AddNew() {

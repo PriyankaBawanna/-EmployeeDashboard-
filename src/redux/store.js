@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./rootReducer";
-import employeeSaga from "../common-component/employeeList/saga-employee";
-import setEmployeeData from "../common-component/registration-page/saga-register";
+import employeeSaga from "../common/employee-list/saga-employee";
+import setEmployeeData from "../common/registration-page/saga-register";
 import createSagaMiddleware from "redux-saga";
 import loginEmployeeSaga from "../login-page/saga-login";
-import updateEmployeeInformation from "../update-employee/updateSaga";
+import updateEmployeeInformation from "../update-employee/update-saga";
 import employeeProfileData from "../profile/saga-profile";
 
 const sagaMiddleware = createSagaMiddleware();

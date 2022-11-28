@@ -12,14 +12,14 @@ function* setEmployeeData({ ...userData }) {
     password: userData.userData.password,
     gender: userData.userData.gender,
   };
-  console.log("Saga Registration ", body);
+
   try {
-    axios
-      .post("http://localhost:3005/employeeRegister/register", body)
-      .then((res) => {
-        alert(res.data.message);
-      });
-  } catch {}
+    axios.post(register, body).then((res) => {
+      alert(res.data.message);
+    });
+  } catch {
+    alert("error");
+  }
 }
 function* setEmployeeDataSaga() {
   yield takeEvery(REGISTER_EMPLOYEE, setEmployeeData);

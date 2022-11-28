@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LogOut from "../logout-component/logOut";
+import LogOut from "../logout/log-out";
 import { employeeProfile } from "./action-profile";
 import { FaChevronDown } from "react-icons/fa";
 export default function Profile() {

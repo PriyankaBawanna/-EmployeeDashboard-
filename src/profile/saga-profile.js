@@ -6,7 +6,7 @@ function* getEmployeeProfile(email) {
   const employeeEmail = email.email;
   console.log("email in profile saga ", email.type, employeeEmail);
   let data = yield fetch(
-    `http://localhost:3005/getSingleEmployee/${employeeEmail}`
+    `http://localhost:3005/employeeRegister/getSingleEmployee/${employeeEmail}`
   );
   data = yield data.json();
   console.log("Api response in profile", data);

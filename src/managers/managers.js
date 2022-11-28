@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogOut from "../logout-component/logOut";
+import LogOut from "../logout/log-out";
 import Profile from "../profile/profile";
 function Managers() {
   return (

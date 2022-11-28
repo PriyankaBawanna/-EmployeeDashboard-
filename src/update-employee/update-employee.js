@@ -1,8 +1,8 @@
-import { RadioButton } from "../common-component/radio-button/selectRole";
+import { RadioButton } from "../common/user-input/selectRole";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { updateEmployeeData } from "./updateaction";
+import { updateEmployeeData } from "./update-action";
 import HR from "../hr-component/hr";
 import Admin from "../admin/admin";
 
