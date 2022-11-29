@@ -9,6 +9,7 @@ export const employeeLogin = (data = initialState, action) => {
     case LOGIN_SUCCESS:
       console.log(" 4 reducer Login Success ", action.response);
       return { isFetching: false, result: action };
+    // return action.response;
 
     case LOGIN_FAIL:
       console.log(" 4 reducer error Reducer   ", action);

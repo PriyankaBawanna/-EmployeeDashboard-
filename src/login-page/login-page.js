@@ -23,19 +23,16 @@ function LoginPage() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.employeeLogin);
   const result = data.result;
+  console.log("Result ", result);
 
   const isLoggedIn = () => {
     dispatch(loginEmployee({ ...loginData }));
-    if (result && loginData.role === "Manger") {
-      navigate("/PrivateRoute/MangerHome");
-    }
 
-    if (result && loginData.role === "Admin") {
-      navigate("/PrivateRoute/AdminHome");
-    }
-
-    if (result && loginData.role === "HR") {
-      navigate("/PrivateRoute/HomePageHr");
+    if (result) {
+      alert("Welcome user");
+      navigate("/private-route");
+    } else {
+      alert("Try again ");
     }
   };
 

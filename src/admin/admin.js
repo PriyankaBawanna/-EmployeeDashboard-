@@ -7,7 +7,7 @@ export default function Admin() {
   return (
     <>
       <div className="header-admin">
-        <Link className="link-hr" to="/AdminHome">
+        <Link className="link-hr" to="/private-route">
           Dashboard
         </Link>
 

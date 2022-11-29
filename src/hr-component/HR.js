@@ -5,8 +5,8 @@ export default function HR() {
   return (
     <>
       <div className="header-admin">
-        <Link className="link-hr" to="/HomePageHr">
-          Home
+        <Link className="link-hr" to="/private-route">
+          Dashboard
         </Link>
 
         <div className="user-profile">

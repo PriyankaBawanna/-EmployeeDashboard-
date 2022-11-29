@@ -6,8 +6,8 @@ function Managers() {
   return (
     <>
       <div className="header-admin">
-        <Link to="/MangerHome" className="link-hr">
-          Dashboard{" "}
+        <Link to="/private-route" className="link-hr">
+          Dashboard
         </Link>
 
         <div className="user-profile">
