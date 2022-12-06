@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 
 import { RadioButton } from "../user-input/selectRole";
 import FormInput from "../user-input/user-input";
-import UserNameError from "../user-input/user-name-error";
-import UserEmailError from "../user-input/user-email-error";
-import PassWordError from "../user-input/password-error";
 
+import { validationUserData } from "../../validation/validation";
 export default function NewRegistration() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
     name: "",
@@ -19,10 +17,10 @@ export default function NewRegistration() {
     role: "",
     gender: "",
   });
-
-  const [pinError, setPinError] = useState(false);
+  const [fromErrors, setFormsErrors] = useState({});
 
   const [disable, setDisable] = useState(0);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const userData = {
     name: inputDataOfEmployee.name,
@@ -49,14 +47,6 @@ export default function NewRegistration() {
     });
   };
 
-  const handleInputPinCode = () => {
-    if (inputDataOfEmployee.pincode.length == 6) {
-      setPinError(true);
-    } else {
-      setPinError(false);
-    }
-  };
-
   const validation = () => {
     if (
       !inputDataOfEmployee.email ||
@@ -71,8 +61,16 @@ export default function NewRegistration() {
     } else {
       setDisable(false);
       dispatch(addEmployeeData({ ...userData }));
+      setIsSubmit(true);
     }
   };
+
+  useEffect(() => {
+    console.log("fromErros ", fromErrors);
+    if (Object.keys(fromErrors).length === 0 && isSubmit == true) {
+      console.log("Form Values ", inputDataOfEmployee);
+    }
+  }, [fromErrors]);
 
   const handleUserChange = (event) => {
     const updatedForm = { ...inputDataOfEmployee };
@@ -82,22 +80,21 @@ export default function NewRegistration() {
     console.log("Form changed: ", updatedForm);
 
     setInputDataOfEmployee(updatedForm);
+    setFormsErrors(validationUserData(updatedForm));
   };
+
   return (
     <>
       <div className="input-fields">
         <FormInput
+          type="text"
+          lassName="input-user-register"
           placeholder="Name"
           name="name"
           value={inputDataOfEmployee.name}
           onChange={handleUserChange}
         />
-
-        {inputDataOfEmployee.name && (
-          <>
-            <UserNameError value={inputDataOfEmployee.name} />
-          </>
-        )}
+        <span className="errorMessage">{fromErrors.name}</span>
       </div>
       <div className="input-fields">
         <input
@@ -121,11 +118,7 @@ export default function NewRegistration() {
           value={inputDataOfEmployee.email}
           onChange={handleUserChange}
         />
-        {inputDataOfEmployee.email && (
-          <>
-            <UserEmailError value={inputDataOfEmployee.email} />
-          </>
-        )}
+        <span className="errorMessage">{fromErrors.email}</span>
       </div>
       <div className="radio-button-registration ">
         <div className="radio-button">
@@ -187,10 +180,9 @@ export default function NewRegistration() {
               ...inputDataOfEmployee,
               pincode: e.target.value,
             });
-            handleInputPinCode();
           }}
         />
-        {pinError && <span>Please Enter the valid pin</span>}
+        <span className="errorMessage">{fromErrors.pincode}</span>
       </div>
       <div className="input-fields">
         <FormInput
@@ -200,11 +192,7 @@ export default function NewRegistration() {
           value={inputDataOfEmployee.password}
           onChange={handleUserChange}
         />
-        {inputDataOfEmployee.password && (
-          <>
-            <PassWordError value={inputDataOfEmployee.password} />
-          </>
-        )}
+        <span className="errorMessage">{fromErrors.password}</span>
       </div>
       <div className="input-fields">
         <button

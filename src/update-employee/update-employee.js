@@ -121,16 +121,26 @@ export default function UpdateEmployee() {
                 }}
               />
             </div>
-            <input
-              className="input-user-register"
-              type="date"
-              id="date-of-birth"
-              name="date-of-birth"
-              value={inputDataOfEmployee.age}
-              onChange={(e) => {
-                handleInputAge(e);
-              }}
-            ></input>
+            <div className="set-date">
+              <input
+                className="input-user-register"
+                id="date-of-birth"
+                name="date-of-birth"
+                dateFormat="dd/MM/yyyy"
+                value={inputDataOfEmployee.age}
+                onChange={(e) => {
+                  handleInputAge(e);
+                }}
+                maxDate={new Date()}
+              ></input>
+              <input
+                className="calender"
+                type={"date"}
+                onChange={(e) => {
+                  handleInputAge(e);
+                }}
+              />
+            </div>
             <div className="user-input">
               <input
                 type="text"
@@ -142,7 +152,6 @@ export default function UpdateEmployee() {
                 }}
               />
             </div>
-
             <div className="radio-button-registration ">
               <div className="radio-button">
                 <span>Gender</span>
@@ -206,7 +215,6 @@ export default function UpdateEmployee() {
                 }}
               />
             </div>
-
             <button
               className="login-button"
               onClick={() => dispatch(updateEmployeeData({ ...userData }))}

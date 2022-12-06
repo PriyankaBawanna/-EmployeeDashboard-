@@ -2,8 +2,9 @@ import { put, takeEvery } from "redux-saga/effects";
 import { GET_USER_PROFILE, SET_USER_PROFILE } from "../redux/constant";
 
 function* getEmployeeProfile(email) {
-  console.log("APi call Here for user Profile");
   const employeeEmail = email.email;
+
+  console.log("APi call Here for user Profile", employeeEmail);
   console.log("email in profile saga ", email.type, employeeEmail);
   let data = yield fetch(
     `http://localhost:3005/employeeRegister/getSingleEmployee/${employeeEmail}`

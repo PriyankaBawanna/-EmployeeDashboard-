@@ -15,46 +15,73 @@ import ViewEmployee from "../update-employee/view-employee";
 
 import { useSelector } from "react-redux";
 import Protected from "../routes/protected-route";
+import { allRoutes, userType } from "../constant/path";
 
 function Home() {
   const data = useSelector((state) => state.employeeLogin);
-  console.log("user login in Index page ", data);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
-          <Route path="/Registration" element={<Registration />} />
-          <Route path="/NewRegistration" element={<NewRegistration />} />
+          <Route path={allRoutes.registrationPage} element={<Registration />} />
           <Route
-            path="/private-route"
+            path={allRoutes.newRegistrationPage}
+            element={<NewRegistration />}
+          />
+
+          <Route
+            path={allRoutes.adminHome}
             element={
-              <Protected>
+              <Protected userRole={[userType.admin]}>
                 <AdminHome />
               </Protected>
             }
           />
           <Route
-            path="/private-route"
+            path={allRoutes.hrHome}
             element={
-              <Protected>
+              <Protected userRole={[userType.hr]}>
                 <HomePageHr />
               </Protected>
             }
           />
           <Route
-            path="/private-route"
+            path={allRoutes.mangerHome}
             element={
-              <Protected>
+              <Protected userRole={[userType.manager]}>
                 <MangerHome />
               </Protected>
             }
           />
+          <Route
+            path={allRoutes.updateEmployeePath}
+            element={
+              <Protected userRole={[userType.admin, userType.hr]}>
+                <UpdateEmployee />
+              </Protected>
+            }
+          />
+          <Route
+            path={allRoutes.addNewEmployeeDetails}
+            element={
+              <Protected userRole={[userType.admin]}>
+                <AddNew />
+              </Protected>
+            }
+          />
 
-          <Route path="/UpdateEmployee" element={<UpdateEmployee />} />
-          <Route path="/ViewEmployee" element={<ViewEmployee />} />
-          <Route path="/AddNew" element={<AddNew />} />
+          <Route
+            path={allRoutes.viewPresentEmployee}
+            element={
+              <Protected
+                userRole={[userType.admin, userType.hr, userType.manager]}
+              >
+                <ViewEmployee />
+              </Protected>
+            }
+          />
 
           <Route path="*" element={<LoginPage />} />
         </Routes>

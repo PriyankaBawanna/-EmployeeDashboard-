@@ -2,9 +2,11 @@ import React, { useState, useEffect, Navigate } from "react";
 import { loginEmployee } from "./action-login";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { RadioButton } from "../common/user-input/selectRole";
+
 import signIn from "../image/signIn.jpg";
+import { employeeProfile } from "../profile/action-profile";
 import { Link, useNavigate } from "react-router-dom";
+import { allRoutes, userType } from "../constant/path";
 
 function LoginPage() {
   const [inputDataOfEmployee, setInputDataOfEmployee] = useState({
@@ -21,26 +23,43 @@ function LoginPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.employeeLogin);
-  const result = data.result;
-  console.log("Result ", result);
+
+  useEffect(() => {
+    if (inputDataOfEmployee.email) {
+      console.log("Email ", inputDataOfEmployee.email);
+      dispatch(employeeProfile(inputDataOfEmployee.email));
+    }
+  }, [inputDataOfEmployee.email]);
+
+  const userProfile = useSelector((state) => state.employeeProfileReducer);
+
+  useEffect(() => {
+    setInputDataOfEmployee({
+      ...inputDataOfEmployee,
+      role: userProfile.role,
+    });
+  }, [userProfile.role]);
+
+  //const data = useSelector((state) => state.employeeLogin);
+  // const result = data.result;
+
+  const result = JSON.parse(localStorage.getItem("userLoginResponse"));
+
+  const role = userProfile.role;
 
   const isLoggedIn = () => {
     dispatch(loginEmployee({ ...loginData }));
-
-    if (result) {
-      alert("Welcome user");
-      navigate("/private-route");
-    } else {
-      alert("Try again ");
+    console.log("Result***--", result);
+    switch (role && result) {
+      case userType.admin === role && result === true:
+        return navigate(allRoutes.adminHome);
+      case userType.hr === role && result === true:
+        return navigate(allRoutes.hrHome);
+      case userType.manager === role && result === true:
+        return navigate(allRoutes.mangerHome);
+      default:
+        return navigate("/");
     }
-  };
-
-  const radioChangeHandler = (e) => {
-    setInputDataOfEmployee({
-      ...inputDataOfEmployee,
-      role: e.target.value,
-    });
   };
 
   return (
@@ -49,38 +68,14 @@ function LoginPage() {
         <div className="image">
           <img src={signIn} />
           <nav>
-            <Link to="/Registration" className="account-create">
+            <Link to="/registration" className="account-create">
               Create an account
             </Link>
           </nav>
         </div>
         <div className="login-filed">
           <h1>Sign up</h1>
-          <div className="radio-button-group">
-            <RadioButton
-              changed={radioChangeHandler}
-              id="1"
-              isSelected={inputDataOfEmployee.role === "Admin"}
-              label="Admin"
-              value="Admin"
-              className="inputRadio"
-            />
 
-            <RadioButton
-              changed={radioChangeHandler}
-              id="2"
-              isSelected={inputDataOfEmployee.role === "HR"}
-              label="HR"
-              value="HR"
-            />
-            <RadioButton
-              changed={radioChangeHandler}
-              id="1"
-              isSelected={inputDataOfEmployee.role === "Manger"}
-              label="Manger"
-              value="Manger"
-            />
-          </div>
           <div>
             <input
               className="input-user"

@@ -15,19 +15,18 @@ function ViewEmployee() {
   console.log("update component role ", role);
   const navigate = useNavigate();
   const backToHomePage = () => {
-    // if (role == "Admin") {
-    //   navigate("/AdminHome");
-    // }
-    // if (role == "HR") {
-    //   navigate("/HomePageHr");
-    // }
-    // if (role == "Manger") {
-    //   navigate("/MangerHome");
-    // }
-    navigate("/private-route");
+    if (role == "Admin") {
+      navigate("/admin/home");
+    }
+    if (role == "HR") {
+      navigate("/hr/home");
+    }
+    if (role == "Manger") {
+      navigate("/manager/home");
+    }
   };
   const goToEditPage = () => {
-    navigate("/UpdateEmployee");
+    navigate("/update-employee");
   };
   return (
     <>

@@ -1,7 +1,7 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { LOGIN_EMPLOYEE, LOGIN_FAIL } from "../redux/constant";
 import axios from "axios";
-import { login } from "../constant-api/api";
+import { login } from "../constant/api";
 import { type } from "@testing-library/user-event/dist/type";
 import { loginFail, loginSuccess } from "./action-login";
 import { getRequest } from "../services/http";

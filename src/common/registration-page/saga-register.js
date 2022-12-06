@@ -1,6 +1,6 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { REGISTER_EMPLOYEE } from "../../redux/constant";
-import { register } from "../../constant-api/api";
+import { register } from "../../constant/api";
 import axios from "axios";
 function* setEmployeeData({ ...userData }) {
   const body = {

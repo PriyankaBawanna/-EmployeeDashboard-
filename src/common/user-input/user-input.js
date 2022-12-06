@@ -1,5 +1,8 @@
+import React, { useState } from "react";
+import UserNameError from "./user-name-error";
 export default function FormInput(props) {
   const { placeholder, type, name, value, onChange } = props;
+  const [error, setError] = useState(false);
 
   return (
     <div>

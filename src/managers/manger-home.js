@@ -7,7 +7,7 @@ export default function MangerHome() {
   return (
     <div className="admin">
       <Managers />
-      <EmployeeList editEmployee={true} />
+      <EmployeeList />
       <div className="footer-f">@copyright</div>
     </div>
   );

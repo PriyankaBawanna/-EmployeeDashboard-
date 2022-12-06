@@ -1,9 +1,10 @@
 @import "./variable";
 @import "./login-page/login";
-@import "./common-component/registration-page/registration";
+@import "./common/registration-page/registration";
 @import "./admin/admin";
 @import "./user-profile/userProfile";
-@import "./common-component/employeeList/employee";
+@import "./common/employee-list/employee";
 @import "./update-employee/updateEmployee";
 @import "./profile/profile";
-@import "./logout-component/_log-out";
+@import "./logout/log-out";
+@import "./error/error";

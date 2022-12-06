@@ -5,7 +5,7 @@ export default function Welcome() {
   let role = JSON.parse(localStorage.getItem("userDetails"));
   const navigate = useNavigate();
   const handleAddNew = () => {
-    navigate("/AddNew");
+    navigate("/add-employee");
   };
 
   return (

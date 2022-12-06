@@ -11,6 +11,7 @@ export default function Profile() {
 
   const dispatch = useDispatch();
   let email = JSON.parse(localStorage.getItem("userEmail"));
+  console.log("email in Profile ", email);
   useEffect(() => {
     dispatch(employeeProfile(email));
   }, []);

@@ -5,21 +5,15 @@ import { employeeProfile } from "../profile/action-profile";
 import { Link, useNavigate } from "react-router-dom";
 import AdminHome from "../admin/admin-home";
 
-const PrivateRoute = (props) => {
-  const { Component } = props;
-  const isLoggedIn = true;
-  let email = JSON.parse(localStorage.getItem("userEmail"));
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(employeeProfile(email));
-  }, []);
-
-  const navigate = useNavigate();
-  const data = useSelector((state) => state.employeeProfileReducer);
-  const role = data.role;
-  console.log("Data in PrivateRoute Component ", role);
-
-  return <>Private Route</>;
+const PrivateRoute = ({ Children }) => {
+  let userLoginResponse = JSON.parse(localStorage.getItem("userLoginResponse"));
+  alert("PRivate route repsonse is trr");
+  if (!userLoginResponse) {
+    return <Navigate to="/" replace />;
+  }
+  if (userLoginResponse) {
+    return Children;
+  }
 };
 export default PrivateRoute;
 

@@ -95,3 +95,13 @@
     background-color: white;
   }
 }
+.set-date {
+  display: flex;
+  flex-direction: row;
+  width: 16rem;
+}
+.calender {
+  width: 1rem;
+  border: none;
+  border-bottom: 1px solid black;
+}

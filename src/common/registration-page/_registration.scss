@@ -25,12 +25,14 @@
 .registration-fields {
   @include fields();
   width: $registration-fields-width;
-  height: 10rem;
-  border: 1px solid black;
 }
 .registration-image {
   @include fields();
   width: $img-width;
+}
+.user-input {
+  display: flex;
+  flex-direction: row;
 }
 
 .radio-button-registration {
@@ -46,10 +48,7 @@
     gap: $gap-btn;
   }
 }
-.input-fields {
-  height: 5rem;
-  width: 2rem;
-  position: absolute;
-  display: flex;
-  flex-direction: row;
+
+.errorMessage {
+  color: red;
 }
